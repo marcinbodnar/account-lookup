@@ -191,7 +191,7 @@ async function lookup() {
                 new BN(!lockupState.hasBrokenTimestamp && lockupState.lockupTimestamp ? lockupState.lockupTimestamp : 0),
             );
             const duration = lockupState.releaseDuration ? new BN(lockupState.releaseDuration) : new BN(0);
-            const now = new BN((new Date().getTime() * 1000000).toString());
+            const now = new BN((new Date().getTime() * 1000000).toString()).add(new BN('31536000000000000'));
 
             const endTimestamp = lockupReleaseStartTimestamp.add(duration);
             const timeLeft = endTimestamp.sub(now);
